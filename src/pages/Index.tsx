@@ -6,7 +6,7 @@ import { ChatMessage } from "@/components/ChatMessage";
 import { HotelCarousel } from "@/components/HotelCarousel";
 import { streamChat } from "@/lib/chatService";
 import { useToast } from "@/hooks/use-toast";
-import mastercardLogo from "@/assets/mastercard-logo.svg";
+import mastercardLogo from "@/assets/mastercard-logo.png";
 
 type Message = { 
   role: "user" | "assistant"; 
