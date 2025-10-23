@@ -6,6 +6,7 @@ import { ChatMessage } from "@/components/ChatMessage";
 import { HotelCarousel } from "@/components/HotelCarousel";
 import { streamChat } from "@/lib/chatService";
 import { useToast } from "@/hooks/use-toast";
+import mastercardLogo from "@/assets/mastercard-logo.png";
 
 type Message = { 
   role: "user" | "assistant"; 
@@ -117,33 +118,17 @@ const Index = () => {
 
   return (
     <div className="min-h-screen bg-background flex flex-col">
-      {/* Header */}
-      <header className="border-b border-border bg-card/50 backdrop-blur-sm sticky top-0 z-10">
-        <div className="container mx-auto px-4 py-4">
-          <div className="flex items-center gap-3">
-            <div className="w-10 h-10 rounded-xl bg-gradient-to-br from-primary via-secondary to-accent flex items-center justify-center">
-              <Hotel className="w-6 h-6 text-white" />
-            </div>
+      {/* Main Content */}
+      <div className="flex-1 container mx-auto px-4 py-6 max-w-4xl">
+        <div className="flex flex-col bg-card rounded-2xl border border-border shadow-[var(--shadow-card)] overflow-hidden h-[calc(100vh-40px)]">
+          <div className="p-4 border-b border-border bg-muted/30 flex items-center gap-3">
+            <img src={mastercardLogo} alt="Mastercard" className="w-10 h-10 object-contain" />
             <div>
-              <h1 className="text-2xl font-bold bg-gradient-to-r from-primary via-secondary to-accent bg-clip-text text-transparent">
-                Hotel Search Assistant
-              </h1>
-              <p className="text-sm text-muted-foreground">
+              <h3 className="font-semibold">Hotel Search Assistant</h3>
+              <p className="text-xs text-muted-foreground mt-1">
                 Powered by Mastercard
               </p>
             </div>
-          </div>
-        </div>
-      </header>
-
-      {/* Main Content */}
-      <div className="flex-1 container mx-auto px-4 py-6 max-w-4xl">
-        <div className="flex flex-col bg-card rounded-2xl border border-border shadow-[var(--shadow-card)] overflow-hidden h-[calc(100vh-180px)]">
-          <div className="p-4 border-b border-border bg-muted/30">
-            <h3 className="font-semibold">Chat with Assistant</h3>
-            <p className="text-xs text-muted-foreground mt-1">
-              Ask about destinations, dates, prices, or amenities
-            </p>
           </div>
 
           <div className="flex-1 overflow-y-auto p-4 space-y-4">
