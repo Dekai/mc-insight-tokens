@@ -6,7 +6,7 @@ import { ChatMessage } from "@/components/ChatMessage";
 import { HotelCarousel } from "@/components/HotelCarousel";
 import { streamChat } from "@/lib/chatService";
 import { useToast } from "@/hooks/use-toast";
-import mastercardLogo from "@/assets/mastercard-logo.png";
+import mastercardLogo from "@/assets/mastercard-logo.svg";
 
 type Message = { 
   role: "user" | "assistant"; 
@@ -122,7 +122,7 @@ const Index = () => {
       <div className="flex-1 container mx-auto px-4 py-6 max-w-4xl">
         <div className="flex flex-col bg-card rounded-2xl border border-border shadow-[var(--shadow-card)] overflow-hidden h-[calc(100vh-40px)]">
           <div className="p-4 border-b border-border bg-muted/30 flex items-center gap-3">
-            <img src={mastercardLogo} alt="Mastercard" className="w-10 h-10 object-contain" />
+            <img src={mastercardLogo} alt="Mastercard" className="w-16 h-16 object-contain" />
             <div>
               <h3 className="font-semibold">Hotel Search Assistant</h3>
               <p className="text-xs text-muted-foreground mt-1">
