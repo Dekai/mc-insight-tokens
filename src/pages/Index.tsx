@@ -1,11 +1,13 @@
 import { useState, useRef, useEffect } from "react";
-import { Send, Loader2, Hotel } from "lucide-react";
+import { Send, Loader2, Hotel, Bot } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { ChatMessage } from "@/components/ChatMessage";
 import { HotelCarousel } from "@/components/HotelCarousel";
 import { streamChat } from "@/lib/chatService";
 import { useToast } from "@/hooks/use-toast";
+import { ThemeSwitcher } from "@/components/ThemeSwitcher";
+import { useTheme } from "@/contexts/ThemeContext";
 import mastercardLogo from "@/assets/mastercard-logo.png";
 
 type Message = { 
@@ -31,6 +33,7 @@ const Index = () => {
   const [isLoading, setIsLoading] = useState(false);
   const messagesEndRef = useRef<HTMLDivElement>(null);
   const { toast } = useToast();
+  const { theme } = useTheme();
 
   const scrollToBottom = () => {
     messagesEndRef.current?.scrollIntoView({ behavior: "smooth" });
@@ -116,19 +119,30 @@ const Index = () => {
     }
   };
 
+  const isChatGPT = theme === "chatgpt";
+
   return (
-    <div className="min-h-screen bg-background flex flex-col">
+    <div className="min-h-screen bg-background flex flex-col transition-colors duration-300">
       {/* Main Content */}
       <div className="flex-1 container mx-auto px-4 py-6 max-w-4xl">
-        <div className="flex flex-col bg-card rounded-2xl border border-border shadow-[var(--shadow-card)] overflow-hidden h-[calc(100vh-40px)]">
-          <div className="p-4 border-b border-border bg-muted/30 flex items-center gap-3">
-            <img src={mastercardLogo} alt="Mastercard" className="w-16 h-16 object-contain" />
-            <div>
-              <h3 className="font-semibold">Hotel Search Assistant</h3>
-              <p className="text-xs text-muted-foreground mt-1">
-                Powered by Mastercard
-              </p>
+        <div className="flex flex-col bg-card rounded-2xl border border-border shadow-[var(--shadow-card)] overflow-hidden h-[calc(100vh-40px)] transition-colors duration-300">
+          <div className="p-4 border-b border-border bg-muted/30 flex items-center justify-between">
+            <div className="flex items-center gap-3">
+              {isChatGPT ? (
+                <div className="w-10 h-10 rounded-full bg-gradient-to-br from-primary to-accent flex items-center justify-center">
+                  <Bot className="w-6 h-6 text-primary-foreground" />
+                </div>
+              ) : (
+                <img src={mastercardLogo} alt="Mastercard" className="w-16 h-16 object-contain" />
+              )}
+              <div>
+                <h3 className="font-semibold">Hotel Search Assistant</h3>
+                <p className="text-xs text-muted-foreground mt-1">
+                  {isChatGPT ? "Powered by AI" : "Powered by Mastercard"}
+                </p>
+              </div>
             </div>
+            <ThemeSwitcher />
           </div>
 
           <div className="flex-1 overflow-y-auto p-4 space-y-4">

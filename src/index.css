@@ -7,7 +7,9 @@ All colors MUST be HSL.
 */
 
 @layer base {
-  :root {
+  /* Default: Mastercard Theme */
+  :root,
+  [data-theme="mastercard"] {
     --background: 0 0% 98%;
     --foreground: 0 0% 10%;
 
@@ -53,6 +55,52 @@ All colors MUST be HSL.
     --transition-smooth: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
   }
 
+  /* ChatGPT Theme - Dark Mode inspired by chat.openai.com */
+  [data-theme="chatgpt"] {
+    --background: 220 13% 10%;
+    --foreground: 0 0% 95%;
+
+    --card: 220 13% 13%;
+    --card-foreground: 0 0% 95%;
+
+    --popover: 220 13% 15%;
+    --popover-foreground: 0 0% 95%;
+
+    /* ChatGPT Teal/Green - Primary */
+    --primary: 160 84% 39%;
+    --primary-foreground: 0 0% 100%;
+
+    /* ChatGPT Subtle Gray - Secondary */
+    --secondary: 220 13% 26%;
+    --secondary-foreground: 0 0% 95%;
+
+    --muted: 220 13% 18%;
+    --muted-foreground: 220 9% 60%;
+
+    /* ChatGPT accent - slightly lighter teal */
+    --accent: 160 70% 45%;
+    --accent-foreground: 0 0% 100%;
+
+    --destructive: 0 62.8% 50%;
+    --destructive-foreground: 0 0% 100%;
+
+    --border: 220 13% 20%;
+    --input: 220 13% 20%;
+    --ring: 160 84% 39%;
+
+    --radius: 0.75rem;
+
+    /* ChatGPT gradient */
+    --gradient-primary: linear-gradient(135deg, hsl(160 84% 39%), hsl(160 70% 45%));
+    --gradient-accent: linear-gradient(135deg, hsl(160 70% 45%), hsl(180 50% 40%));
+    
+    /* Subtle shadows for dark theme */
+    --shadow-card: 0 4px 20px -2px hsl(0 0% 0% / 0.3);
+    --shadow-hover: 0 8px 30px -4px hsl(0 0% 0% / 0.4);
+    
+    --transition-smooth: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  }
+
   .dark {
     --background: 0 0% 8%;
     --foreground: 0 0% 98%;
@@ -91,5 +139,6 @@ All colors MUST be HSL.
 
   body {
     @apply bg-background text-foreground;
+    transition: background-color 0.3s ease, color 0.3s ease;
   }
 }
